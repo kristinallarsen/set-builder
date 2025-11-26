@@ -103,38 +103,102 @@ function makeCardDraggable(card) {
     }
   });
 }
-
-// Helper function to get metadata values
-function getMetadataValue(metadata, label, getLast = false) {
-  const items = metadata.filter(item => item.label === label);
-  
-  if (getLast && items.length > 0) {
-    const lastItem = items[items.length - 1]; // Get the last instance found
-    if (Array.isArray(lastItem.value)) {
-      return lastItem.value[0]; // Return the first value of the array (Digital Commonwealth)
+// Detect IIIF version
+function getIIIFVersion(manifest) {
+  if (manifest['@context']) {
+    if (manifest['@context'].includes('/3/')) {
+      return 3;
     }
-    return lastItem.value; // Return the value directly if it's not an array
+    if (manifest['@context'].includes('/2/')) {
+      return 2;
+    }
   }
-
-  return items.length > 0 ? items[0].value : null; // Return the first instance or null
+  // If no @context, check for sequences (IIIF 2.0) vs items (IIIF 3.0)
+  return manifest.sequences ? 2 : 3;
 }
+
+// Helper function to get metadata values (handles both IIIF 2.0 and 3.0)
+function getMetadataValue(metadata, label, getLast = false) {
+  if (!metadata) return null;
+  
+  // Normalize label to lowercase for comparison
+  const normalizedLabel = label.toLowerCase();
+  
+  const items = metadata.filter(item => {
+    // IIIF 2.0 format: item.label is a string
+    if (typeof item.label === 'string') {
+      return item.label.toLowerCase() === normalizedLabel;
+    }
+    // IIIF 3.0 format: item.label is an object like {none: ["Title"]} or {en: ["Title"]}
+    if (typeof item.label === 'object') {
+      const labelValues = Object.values(item.label).flat();
+      return labelValues.some(val => val.toLowerCase() === normalizedLabel);
+    }
+    return false;
+  });
+  
+  if (items.length === 0) return null;
+  
+  const item = getLast ? items[items.length - 1] : items[0];
+  
+  // IIIF 2.0 format: value is a string or array
+  if (typeof item.value === 'string') {
+    return item.value;
+  }
+  if (Array.isArray(item.value)) {
+    return item.value[0];
+  }
+  
+  // IIIF 3.0 format: value is an object like {none: ["value"]} or {en: ["value"]}
+  if (typeof item.value === 'object') {
+    const valueArray = Object.values(item.value).flat();
+    return valueArray[0] || null;
+  }
+  
+  return null;
+}
+
 
 // Helper function to check if URL is absolute
 function isAbsoluteURL(url) {
   return /^(http|https):\/\//i.test(url);
 }
 
-// Function to add a canvas to the gallery
+// Function to add a canvas to the gallery (supports IIIF 2.0 and 3.0)
 function addCanvasToGallery(canvas, manifest) {
-  const imageService = canvas.images[0].resource.service;
-
-  if (!imageService || !imageService['@id']) {
-    console.error('Image service is missing or does not contain an @id field:', canvas);
-    return;
+  const iiifVersion = getIIIFVersion(manifest);
+  
+  let imageService, imageUrl, highResUrl;
+  
+  // Handle different IIIF versions for image extraction
+  if (iiifVersion === 3) {
+    // IIIF 3.0 structure: canvas.items[0].items[0].body.service[0]
+    const annotation = canvas.items?.[0]?.items?.[0];
+    if (!annotation || !annotation.body) {
+      console.error('IIIF 3.0: Missing annotation body:', canvas);
+      return;
+    }
+    
+    imageService = annotation.body.service?.[0];
+    if (!imageService || !imageService.id) {
+      console.error('IIIF 3.0: Image service is missing or does not contain an id field:', canvas);
+      return;
+    }
+    
+    imageUrl = `${imageService.id}/full/!200,200/0/default.jpg`;
+    highResUrl = `${imageService.id}/info.json`;
+    
+  } else {
+    // IIIF 2.0 structure: canvas.images[0].resource.service
+    imageService = canvas.images?.[0]?.resource?.service;
+    if (!imageService || !imageService['@id']) {
+      console.error('IIIF 2.0: Image service is missing or does not contain an @id field:', canvas);
+      return;
+    }
+    
+    imageUrl = `${imageService['@id']}/full/!200,200/0/default.jpg`;
+    highResUrl = `${imageService['@id']}/info.json`;
   }
-
-  const imageUrl = `${imageService['@id']}/full/!200,200/0/default.jpg`;
-  const highResUrl = `${imageService['@id']}/info.json`;
 
   // Retrieve metadata from both the manifest and the canvas
   const manifestMetadata = manifest.metadata || [];    
@@ -143,47 +207,192 @@ function addCanvasToGallery(canvas, manifest) {
   console.log('Manifest Metadata:', manifestMetadata);
   console.log('Canvas Metadata:', canvasMetadata);
 
-    // Attempt to get title, date and author
-  let title = getMetadataValue(canvasMetadata, 'Title') || getMetadataValue(manifestMetadata, 'Title') || manifest.label || 'No title returned';
-  let date = getMetadataValue(canvasMetadata, 'Date') || getMetadataValue(manifestMetadata, 'Date') || getMetadataValue(manifestMetadata, 'Created Published') || 'No date returned';
-  let author = getMetadataValue(canvasMetadata, 'Creator') || getMetadataValue(manifestMetadata, 'Creator') || getMetadataValue(canvasMetadata, 'Contributors') || getMetadataValue(manifestMetadata, 'Contributors') || getMetadataValue(canvasMetadata, 'Author') || getMetadataValue(manifestMetadata, 'Author') || getMetadataValue(canvasMetadata, 'Contributor') || getMetadataValue(manifestMetadata, 'Contributor') || 'No author returned';
+  // Extract title - handle both IIIF 2.0 and 3.0
+  let title = 'No title returned';
+  
+  if (iiifVersion === 3) {
+    // IIIF 3.0: labels are objects like {none: ["Title"]} or {en: ["Title"]}
+    if (manifest.label) {
+      const labelValues = Object.values(manifest.label).flat();
+      title = labelValues[0] || 'No title returned';
+    }
+  } else {
+    // IIIF 2.0: labels are strings
+    title = manifest.label || 'No title returned';
+  }
+  
+  // Also check metadata for title (works for both versions now)
+  const metadataTitle = getMetadataValue(canvasMetadata, 'Title') || getMetadataValue(manifestMetadata, 'Title');
+  if (metadataTitle) title = metadataTitle;
 
-   // Get collection name and attribution
-  let collection = getMetadataValue(canvasMetadata, 'Location') || getMetadataValue(manifestMetadata, 'Location') || 'No collection returned';
-  const attribution = manifest.attribution || 'No attribution returned';
+  // Get date
+  let date = getMetadataValue(canvasMetadata, 'Date') || 
+             getMetadataValue(manifestMetadata, 'Date') || 
+             getMetadataValue(manifestMetadata, 'Created Published') || 
+             'No date returned';
+
+  // Get author/creator
+  let author = getMetadataValue(canvasMetadata, 'Creator') || 
+               getMetadataValue(manifestMetadata, 'Creator') || 
+               getMetadataValue(canvasMetadata, 'Contributors') || 
+               getMetadataValue(manifestMetadata, 'Contributors') || 
+               getMetadataValue(canvasMetadata, 'Author') || 
+               getMetadataValue(manifestMetadata, 'Author') || 
+               getMetadataValue(canvasMetadata, 'Contributor') || 
+               getMetadataValue(manifestMetadata, 'Contributor') || 
+               'No author returned';
+
+ // Get collection
+let collection = getMetadataValue(canvasMetadata, 'Location') || 
+                 getMetadataValue(manifestMetadata, 'Location') || 
+                 getMetadataValue(manifestMetadata, 'Collection') || 
+                 'No collection returned';
+
+// For Internet Archive (IIIF 3.0), prefer Contributor over Collection
+if (iiifVersion === 3) {
+  const contributor = getMetadataValue(manifestMetadata, 'Contributor') || 
+                      getMetadataValue(canvasMetadata, 'Contributor');
+  if (contributor) {
+    collection = contributor;
+  }
+}
+  // Get attribution
+  let attribution = 'No attribution returned';
+  if (iiifVersion === 3) {
+    // IIIF 3.0: check provider or requiredStatement
+    if (manifest.provider?.[0]?.label) {
+      const providerLabel = Object.values(manifest.provider[0].label).flat();
+      attribution = providerLabel[0] || 'No attribution returned';
+    }
+    if (manifest.requiredStatement?.value) {
+      const reqValue = Object.values(manifest.requiredStatement.value).flat();
+      attribution = reqValue[0] || attribution;
+    }
+  } else {
+    // IIIF 2.0
+    attribution = manifest.attribution || 'No attribution returned';
+  }
 
   // Get location link from various possible sources
   let locationLink = null;
 
-  // Check for a valid URL in the related field (David Rumsey / LUNA)
-  if (manifest.related) {
-    // If related is an object and has an @id
-    if (typeof manifest.related === 'object' && manifest.related["@id"]) {
-      locationLink = manifest.related["@id"];
-    } 
-    // If it's a string, use that directly
-    else if (typeof manifest.related === 'string') {
-      locationLink = manifest.related;
+  if (iiifVersion === 3) {
+    // IIIF 3.0: check homepage
+    if (manifest.homepage?.[0]?.id) {
+      locationLink = manifest.homepage[0].id;
+    }
+  } else {
+    // IIIF 2.0: check related field (David Rumsey / LUNA)
+    if (manifest.related) {
+      if (typeof manifest.related === 'object' && manifest.related["@id"]) {
+        locationLink = manifest.related["@id"];
+      } else if (typeof manifest.related === 'string') {
+        locationLink = manifest.related;
+      }
     }
   }
 
   // If locationLink is still not defined, check other sources
   if (!locationLink) {
     locationLink = getMetadataValue(canvasMetadata, 'Identifier') || 
-                   getMetadataValue(manifestMetadata, 'Identifier', true) || // Get last occurrence
-                   getMetadataValue(canvasMetadata, 'Item Url') || // LOC label
-                   getMetadataValue(manifestMetadata, 'Item Url') || // covering canvas and manifest metadata sources
-                   canvas['@id'] || 
+                   getMetadataValue(manifestMetadata, 'Identifier', true) ||
+                   getMetadataValue(canvasMetadata, 'Item Url') ||
+                   getMetadataValue(manifestMetadata, 'Item Url') ||
+                   getMetadataValue(manifestMetadata, 'identifier-access') || // Internet Archive
+                   canvas['@id'] ||
+                   canvas.id || // IIIF 3.0 uses 'id' instead of '@id'
                    'No link available';
+  }
+
+  // Ensure the link is absolute
+  if (!isAbsoluteURL(locationLink) && locationLink !== 'No link available') {
+    locationLink = 'https://' + locationLink;
   }
 
   // Debugging logs for verification
   console.log('Location Link:', locationLink);
 
-  // Ensure the link is absolute
-  if (!isAbsoluteURL(locationLink) && locationLink !== 'No link available') {
-    locationLink = 'https://' + locationLink; // Make it an absolute URL
-  }
+  // Create card element
+  const card = document.createElement('div');
+  card.className = 'card';
+  
+  // Make card draggable
+  makeCardDraggable(card);
+
+  // Create image element
+  const img = document.createElement('img');
+  img.src = imageUrl;
+  img.alt = title;
+
+  // Click to view in OpenSeadragon
+  img.addEventListener('click', () => {
+    viewer.open(highResUrl);
+  });
+
+  // Create delete button
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.textContent = '×';
+  deleteBtn.addEventListener('click', () => {
+    const shouldRemove = confirm('Do you want to remove this image from the gallery?');
+    if (shouldRemove) {
+      card.remove();
+    }
+  });
+
+  // Create metadata elements
+  const titleEl = document.createElement('p');
+  titleEl.innerHTML = `<strong>Title:</strong> ${title}`;
+
+  const authorEl = document.createElement('p');
+  authorEl.innerHTML = `<strong>Author:</strong> ${author}`;
+
+  const dateEl = document.createElement('p');
+  dateEl.innerHTML = `<strong>Date:</strong> ${date}`;
+
+  const collectionEl = document.createElement('p');
+  collectionEl.innerHTML = `<strong>Collection:</strong> ${collection}`;
+
+  const attributionEl = document.createElement('p');
+  attributionEl.innerHTML = `<strong>Attribution:</strong> ${attribution}`;
+
+  // Create link to item
+  const locationLinkEl = document.createElement('a');
+  locationLinkEl.href = locationLink;
+  locationLinkEl.textContent = 'View Item';
+  locationLinkEl.target = '_blank';
+
+  const locationParagraph = document.createElement('p');
+  locationParagraph.appendChild(locationLinkEl);
+
+  // Create link to IIIF manifest
+  const manifestLinkEl = document.createElement('a');
+  manifestLinkEl.href = manifest['@id'] || manifest.id || '#';
+  manifestLinkEl.textContent = 'View IIIF Manifest';
+  manifestLinkEl.target = '_blank';
+  manifestLinkEl.className = 'manifest-link';
+
+  const manifestParagraph = document.createElement('p');
+  manifestParagraph.appendChild(manifestLinkEl);
+
+  // Append all elements to card
+  card.appendChild(deleteBtn);
+  card.appendChild(img);
+  card.appendChild(titleEl);
+  card.appendChild(authorEl);
+  card.appendChild(dateEl);
+  card.appendChild(collectionEl);
+  card.appendChild(attributionEl);
+  card.appendChild(locationParagraph);
+  card.appendChild(manifestParagraph);
+
+  // Add card to gallery
+  document.getElementById('gallery').appendChild(card);
+}
+
+
+  // Debugging logs for verification
+  console.log('Location Link:', locationLink);
 
   // Create card element
   const card = document.createElement('div');
@@ -261,7 +470,7 @@ function addCanvasToGallery(canvas, manifest) {
 
   // Add card to gallery
   document.getElementById('gallery').appendChild(card);
-}
+
 
 // Clear current gallery and add images from loaded collection
 function repopulateGallery(manifestData) {
@@ -272,36 +481,38 @@ function repopulateGallery(manifestData) {
     return;
   }
   
-  gallery.innerHTML = ''; // Clear the current gallery
+  gallery.innerHTML = '';
 
-  // Check if items array exists
-  const manifests = manifestData.items; // Update based on IIIF spec
+  const manifests = manifestData.items;
 
   if (!Array.isArray(manifests)) {
     console.error('No valid items found in the manifest data.');
     return;
   }
 
-  // Clear the collectedManifests array and repopulate it
   collectedManifests = [];
 
   manifests.forEach(manifest => {
-    // Store the manifest
     collectedManifests.push(manifest);
     
-    // Access the sequences within each manifest
-    if (manifest.sequences && manifest.sequences.length > 0) {
-      const canvasItems = manifest.sequences[0].canvases;
-      canvasItems.forEach(canvas => {
-        addCanvasToGallery(canvas, manifest);
-      });
+    const iiifVersion = getIIIFVersion(manifest);
+    let canvasItems = [];
+
+    if (iiifVersion === 3) {
+      // IIIF 3.0
+      canvasItems = manifest.items || [];
     } else {
-      console.error('Manifest does not contain valid sequences.');
+      // IIIF 2.0
+      canvasItems = manifest.sequences?.[0]?.canvases || [];
     }
+
+    canvasItems.forEach(canvas => {
+      addCanvasToGallery(canvas, manifest);
+    });
   });
 }
 
-// Function to add a IIIF manifest to the gallery
+// Function to add a IIIF manifest to the gallery (supports both 2.0 and 3.0)
 async function addManifestToGallery(manifestUrl) {
   try {
     const response = await fetch(manifestUrl);
@@ -311,15 +522,26 @@ async function addManifestToGallery(manifestUrl) {
     }
 
     const manifest = await response.json();
+    const iiifVersion = getIIIFVersion(manifest);
 
-    if (!manifest.sequences || !manifest.sequences[0].canvases) {
-      throw new Error('Manifest does not contain sequences or canvases in the expected format.');
+    let canvasItems = [];
+
+    if (iiifVersion === 3) {
+      // IIIF 3.0: items are directly in manifest.items
+      if (!manifest.items || manifest.items.length === 0) {
+        throw new Error('IIIF 3.0 Manifest does not contain items (canvases).');
+      }
+      canvasItems = manifest.items;
+    } else {
+      // IIIF 2.0: canvases are in sequences
+      if (!manifest.sequences || !manifest.sequences[0].canvases) {
+        throw new Error('IIIF 2.0 Manifest does not contain sequences or canvases in the expected format.');
+      }
+      canvasItems = manifest.sequences[0].canvases;
     }
 
     // Store the manifest for later export
     collectedManifests.push(manifest);
-
-    const canvasItems = manifest.sequences[0].canvases;
 
     canvasItems.forEach(canvas => {
       addCanvasToGallery(canvas, manifest);
