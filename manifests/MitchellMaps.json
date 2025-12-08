@@ -1,12 +1,8 @@
 {
-  "@context": "http://iiif.io/api/presentation/3.0/context.json",
-  "id": "http://example.org/combined-manifest",
-  "type": "Manifest",
-  "label": {
-    "en": [
-      "Combined Manifest"
-    ]
-  },
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Collection",
+  "@id": "https://example.org/collection/MitchellMaps",
+  "label": "MitchellMaps",
   "items": [
     {
       "@context": "http://iiif.io/api/presentation/2/context.json",
