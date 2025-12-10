@@ -1,0 +1,2114 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Collection",
+  "@id": "https://example.org/collection/papillons",
+  "label": "papillons",
+  "items": [
+    {
+      "@context": "http://iiif.io/api/presentation/3/context.json",
+      "behavior": [
+        "paged"
+      ],
+      "homepage": [
+        {
+          "format": "text/html",
+          "id": "https://archive.org/details/lespapillonsmeta02nuse_0",
+          "label": {
+            "en": [
+              "Item Page on Internet Archive"
+            ]
+          },
+          "type": "Text"
+        }
+      ],
+      "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/manifest.json",
+      "items": [
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/13.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3597,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$12/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/12",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0013.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0013.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/12",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$12/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "13"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2518
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/15.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3597,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$14/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/14",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0015.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0015.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/14",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$14/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "15"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2518
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/17.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3597,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$16/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/16",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0017.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0017.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/16",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$16/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "17"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2518
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/19.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3597,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$18/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/18",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0019.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0019.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/18",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$18/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "19"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2518
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/23.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3597,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$22/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/22",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0023.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0023.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/22",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$22/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "23"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2518
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/45.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$44/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/44",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0045.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0045.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/44",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$44/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "45"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/67.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$66/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/66",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0067.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0067.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/66",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$66/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "67"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/73.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$72/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/72",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0073.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0073.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/72",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$72/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "73"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/95.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$94/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/94",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0095.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0095.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/94",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$94/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "95"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/101.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$100/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/100",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0101.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0101.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/100",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$100/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "101"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/119.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$118/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/118",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0119.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0119.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/118",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$118/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "119"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/131.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$130/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/130",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0131.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0131.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/130",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$130/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "131"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/153.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$152/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/152",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0153.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0153.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/152",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$152/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "153"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/161.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$160/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/160",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0161.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0161.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/160",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$160/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "161"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/187.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$186/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/186",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0187.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0187.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/186",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$186/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "187"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/201.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$200/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/200",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0201.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0201.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/200",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$200/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "201"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/214.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$213/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/213",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0214.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0214.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/213",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$213/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "214"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/219.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$218/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/218",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0219.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0219.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/218",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$218/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "219"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/230.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$229/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/229",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0230.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0230.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/229",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$229/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "230"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/251.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$250/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/250",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0251.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0251.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/250",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$250/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "251"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/259.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$258/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/258",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0259.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0259.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/258",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$258/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "259"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/285.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$284/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/284",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0285.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0285.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/284",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$284/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "285"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/292.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$291/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/291",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0292.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0292.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/291",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$291/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "292"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/297.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$296/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/296",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0297.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0297.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/296",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$296/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "297"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/300.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$299/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/299",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0300.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0300.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/299",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$299/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "300"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/301.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$300/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/300",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0301.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0301.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/300",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$300/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "301"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/303.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$302/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/302",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0303.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0303.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/302",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$302/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "303"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/304.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$303/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/303",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0304.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0304.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/303",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$303/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "304"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        },
+        {
+          "annotations": [
+            {
+              "id": "https://iiif.archive.org/iiif/3/annotations/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml/305.json",
+              "type": "AnnotationPage"
+            }
+          ],
+          "height": 3415,
+          "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$304/canvas",
+          "items": [
+            {
+              "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotationPage/304",
+              "items": [
+                {
+                  "body": {
+                    "format": "image/jpeg",
+                    "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0305.jp2/full/max/0/default.jpg",
+                    "service": [
+                      {
+                        "id": "https://iiif.archive.org/image/iiif/3/lespapillonsmeta02nuse_0%2Flespapillonsmeta02nuse_0_jp2.zip%2Flespapillonsmeta02nuse_0_jp2%2Flespapillonsmeta02nuse_0_0305.jp2",
+                        "profile": "level2",
+                        "type": "ImageService3"
+                      }
+                    ],
+                    "type": "Image"
+                  },
+                  "id": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0/annotation/304",
+                  "motivation": "painting",
+                  "target": "https://iiif.archive.org/iiif/lespapillonsmeta02nuse_0$304/canvas",
+                  "type": "Annotation"
+                }
+              ],
+              "type": "AnnotationPage"
+            }
+          ],
+          "label": {
+            "none": [
+              "305"
+            ]
+          },
+          "type": "Canvas",
+          "width": 2230
+        }
+      ],
+      "label": {
+        "none": [
+          "Les papillons : métamorphoses terrestres des peuples de l'air"
+        ]
+      },
+      "metadata": [
+        {
+          "label": {
+            "none": [
+              "language"
+            ]
+          },
+          "value": {
+            "none": [
+              "fre"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "scanningcenter"
+            ]
+          },
+          "value": {
+            "none": [
+              "santamonica"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "sponsor"
+            ]
+          },
+          "value": {
+            "none": [
+              "Getty Research Institute"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "contributor"
+            ]
+          },
+          "value": {
+            "none": [
+              "Getty Research Institute"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "date"
+            ]
+          },
+          "value": {
+            "none": [
+              "1852"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "subject"
+            ]
+          },
+          "value": {
+            "none": [
+              "Butterflies",
+              "Butterflies"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "title"
+            ]
+          },
+          "value": {
+            "none": [
+              "Les papillons : métamorphoses terrestres des peuples de l'air"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "creator"
+            ]
+          },
+          "value": {
+            "none": [
+              "Nus, Eugène, 1816-1894, author",
+              "Méray, Antony, 1817- author",
+              "Varin, Amédée, 1818-1883, illustrator",
+              "Soye, E. de, printer",
+              "Raban, 1795-1870. Entomologie des dames",
+              "Gabriel de Gonet, éditeur, publisher"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "collection"
+            ]
+          },
+          "value": {
+            "none": [
+              "getty",
+              "americana"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "shiptracking"
+            ]
+          },
+          "value": {
+            "none": [
+              "ST008194"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "physical_item"
+            ]
+          },
+          "value": {
+            "none": [
+              "3"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "call_number"
+            ]
+          },
+          "value": {
+            "none": [
+              "9928967360001551"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "volume"
+            ]
+          },
+          "value": {
+            "none": [
+              "v. 2"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "mediatype"
+            ]
+          },
+          "value": {
+            "none": [
+              "texts"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "repub_state"
+            ]
+          },
+          "value": {
+            "none": [
+              "4"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "page-progression"
+            ]
+          },
+          "value": {
+            "none": [
+              "lr"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "updatedate"
+            ]
+          },
+          "value": {
+            "none": [
+              "2017-10-25 18:09:15"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "updater"
+            ]
+          },
+          "value": {
+            "none": [
+              "associate-douglas-marcchett@archive.org"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "identifier"
+            ]
+          },
+          "value": {
+            "none": [
+              "lespapillonsmeta02nuse_0"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "addeddate"
+            ]
+          },
+          "value": {
+            "none": [
+              "2017-10-25 18:09:17"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "scanner"
+            ]
+          },
+          "value": {
+            "none": [
+              "scribe2.santamonica.archive.org"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "notes"
+            ]
+          },
+          "value": {
+            "none": [
+              "No copyright page found. No table-of-contents pages found."
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "repub_seconds"
+            ]
+          },
+          "value": {
+            "none": [
+              "1290"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "ppi"
+            ]
+          },
+          "value": {
+            "none": [
+              "350"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "camera"
+            ]
+          },
+          "value": {
+            "none": [
+              "Canon EOS 5D Mark II"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "operator"
+            ]
+          },
+          "value": {
+            "none": [
+              "associate-douglas-marcchett@archive.org"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "scandate"
+            ]
+          },
+          "value": {
+            "none": [
+              "20171025204517"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "republisher"
+            ]
+          },
+          "value": {
+            "none": [
+              "associate-douglas-marcchett@archive.org"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "republisher_operator"
+            ]
+          },
+          "value": {
+            "none": [
+              "associate-douglas-marcchett@archive.org"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "republisher_date"
+            ]
+          },
+          "value": {
+            "none": [
+              "20171027183152"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "foldoutcount"
+            ]
+          },
+          "value": {
+            "none": [
+              "0"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "identifier-access"
+            ]
+          },
+          "value": {
+            "none": [
+              "http://archive.org/details/lespapillonsmeta02nuse_0"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "identifier-ark"
+            ]
+          },
+          "value": {
+            "none": [
+              "ark:/13960/t3229760x"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "bookplateleaf"
+            ]
+          },
+          "value": {
+            "none": [
+              "0008"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "scanfee"
+            ]
+          },
+          "value": {
+            "none": [
+              "120"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "invoice"
+            ]
+          },
+          "value": {
+            "none": [
+              "101"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "filesxml"
+            ]
+          },
+          "value": {
+            "none": [
+              "Wed Nov 1 4:44:38 UTC 2017"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "sponsordate"
+            ]
+          },
+          "value": {
+            "none": [
+              "20171031"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "external-identifier"
+            ]
+          },
+          "value": {
+            "none": [
+              "urn:oclc:record:1157123724"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "oclc-id"
+            ]
+          },
+          "value": {
+            "none": [
+              "3394750",
+              "987024648"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "references"
+            ]
+          },
+          "value": {
+            "none": [
+              "Carteret, L. Trésor, 1801-1875, t. 3, p. 452"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "associated-names"
+            ]
+          },
+          "value": {
+            "none": [
+              "Méray, Antony, 1817- author; Varin, Amédée, 1818-1883, illustrator; Soye, E. de, printer; Raban, 1795-1870. Entomologie des dames; Gabriel de Gonet, éditeur, publisher"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "ocr_module_version"
+            ]
+          },
+          "value": {
+            "none": [
+              "0.0.21"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "ocr_converted"
+            ]
+          },
+          "value": {
+            "none": [
+              "abbyy-to-hocr 1.1.37"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "page_number_confidence"
+            ]
+          },
+          "value": {
+            "none": [
+              "95"
+            ]
+          }
+        },
+        {
+          "label": {
+            "none": [
+              "page_number_module_version"
+            ]
+          },
+          "value": {
+            "none": [
+              "1.0.3"
+            ]
+          }
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://iiif.archive.org/iiif/getty/collection.json",
+          "type": "Collection"
+        },
+        {
+          "id": "https://iiif.archive.org/iiif/americana/collection.json",
+          "type": "Collection"
+        }
+      ],
+      "provider": [
+        {
+          "homepage": [
+            {
+              "format": "text/html",
+              "id": "https://archive.org",
+              "label": {
+                "en": [
+                  "Internet Archive Homepage"
+                ]
+              },
+              "type": "Text"
+            }
+          ],
+          "id": "https://archive.org",
+          "label": {
+            "en": [
+              "The Internet Archive"
+            ]
+          },
+          "logo": [
+            {
+              "format": "image/png",
+              "height": 79,
+              "id": "https://archive.org/images/glogo.png",
+              "type": "Image",
+              "width": 79
+            }
+          ],
+          "type": "Agent"
+        }
+      ],
+      "rendering": [
+        {
+          "format": "application/pdf",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0.pdf",
+          "label": {
+            "en": [
+              "Text PDF"
+            ]
+          },
+          "type": "Text"
+        },
+        {
+          "format": "application/gzip",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_abbyy.gz",
+          "label": {
+            "en": [
+              "Abbyy GZ"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/x-bittorrent",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_archive.torrent",
+          "label": {
+            "en": [
+              "Archive BitTorrent"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/gzip",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_chocr.html.gz",
+          "label": {
+            "en": [
+              "chOCR"
+            ]
+          },
+          "type": "Text"
+        },
+        {
+          "format": "text/plain",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.txt",
+          "label": {
+            "en": [
+              "DjVuTXT"
+            ]
+          },
+          "type": "Text"
+        },
+        {
+          "format": "application/xml",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_djvu.xml",
+          "label": {
+            "en": [
+              "Djvu XML"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "text/html",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_hocr.html",
+          "label": {
+            "en": [
+              "hOCR"
+            ]
+          },
+          "type": "Text"
+        },
+        {
+          "format": "application/gzip",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_hocr_searchtext.txt.gz",
+          "label": {
+            "en": [
+              "OCR Search Text"
+            ]
+          },
+          "type": "Text"
+        },
+        {
+          "format": "application/zip",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_jp2.zip",
+          "label": {
+            "en": [
+              "Single Page Processed JP2 ZIP"
+            ]
+          },
+          "type": "Image"
+        },
+        {
+          "format": "application/x-tar",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_orig_jp2.tar",
+          "label": {
+            "en": [
+              "Single Page Original JP2 Tar"
+            ]
+          },
+          "type": "Image"
+        }
+      ],
+      "seeAlso": [
+        {
+          "format": "application/json",
+          "id": "https://archive.org/metadata/lespapillonsmeta02nuse_0",
+          "label": {
+            "en": [
+              "Item Metadata"
+            ]
+          },
+          "type": "Metadata"
+        },
+        {
+          "format": "text/plain",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_cloth_detection.log",
+          "label": {
+            "en": [
+              "Cloth Cover Detection Log"
+            ]
+          },
+          "type": "Text"
+        },
+        {
+          "format": "application/xml",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_dc.xml",
+          "label": {
+            "en": [
+              "Dublin Core"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/json",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_hocr_pageindex.json.gz",
+          "label": {
+            "en": [
+              "OCR Page Index"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/xml",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_marc.xml",
+          "label": {
+            "en": [
+              "MARC"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/marc",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_meta.mrc",
+          "label": {
+            "en": [
+              "MARC Binary"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/xml",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_metasource.xml",
+          "label": {
+            "en": [
+              "MARC Source"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/json",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_page_numbers.json",
+          "label": {
+            "en": [
+              "Page Numbers JSON"
+            ]
+          },
+          "type": "Dataset"
+        },
+        {
+          "format": "application/xml",
+          "id": "https://archive.org/download/lespapillonsmeta02nuse_0/lespapillonsmeta02nuse_0_scandata.xml",
+          "label": {
+            "en": [
+              "Scandata"
+            ]
+          },
+          "type": "Dataset"
+        }
+      ],
+      "service": [
+        {
+          "@id": "https://iiif.archive.org/iiif/search/lespapillonsmeta02nuse_0",
+          "@type": "SearchService1",
+          "profile": "http://iiif.io/api/search/1/search"
+        }
+      ],
+      "summary": {
+        "none": [
+          "The princess Ginebra married young to a man who could talk to spirits, asks her husband to give form to these spirits so that she too may know them. He asks her what form would she like to see them in and she chooses her favorite insect, the butterfly",
+          "Includes section: Entomologie des dames / par Le Cte Foelix",
+          "Plates are hand-colored accompanied by guard sheets. Includes 1 plate opposite p. 152 (t. 2)--entitled \"Cazotte\" which is not in list of illustrated plates found in vol. Plates are a mix of woodcuts (11 + 9) and steel engravings (9 + 6)",
+          "Binding: marbled paper over boards; half morocco",
+          "Carteret, L. Trésor, 1801-1875",
+          "Library's volume 1 has handwritten notes inserted"
+        ]
+      },
+      "thumbnail": [
+        {
+          "format": "image/jpeg",
+          "height": 275,
+          "id": "https://iiif.archive.org/image/iiif/2/lespapillonsmeta02nuse_0%2f__ia_thumb.jpg/full/180,/0/default.jpg",
+          "service": [
+            {
+              "@id": "https://iiif.archive.org/image/iiif/2/lespapillonsmeta02nuse_0%2F__ia_thumb.jpg",
+              "@type": "ImageService2",
+              "profile": "http://iiif.io/api/image/2/level2.json"
+            }
+          ],
+          "type": "Image",
+          "width": 180
+        }
+      ],
+      "type": "Manifest",
+      "viewingDirection": "left-to-right"
+    }
+  ]
+}
