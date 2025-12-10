@@ -22,10 +22,14 @@
 
   /* Hide the hint once an image has been opened */ 
   .viewer-has-image #viewerHint { display: none !important; } 
+
+  /* Make view-only: hide input controls and delete buttons */ 
+.view-only #inputPanel { display: none !important; } .view-only #toggleInputs { display: none !important; } .view-only .delete-btn { display: none !important; } 
+
   </style>
 
 </head>
-<body>
+<body class="view-only">
   <div class="container">
     <div class="left-panel">
       <div class="header">
@@ -48,7 +52,7 @@
     <!-- Resizable divider -->
     <div id="resizer"></div>
     <div id="viewer"></div>
-    <script src="viewer-script.js"></script>
+    <script src="script.js"></script>
   </div>
   <!-- Script to either load first image if called in link or hint overlay -->
   <script> 
