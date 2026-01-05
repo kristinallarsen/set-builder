@@ -3,6 +3,48 @@ let collectedManifests = []; // This will hold the individual manifests
 let currentManifestForSelection = null; 
 let selectedPageIndices = new Set(); 
 
+// Global state for gallery name
+let currentGalleryName = '';
+
+// Function to set gallery name across all displays
+function setGalleryName(name) {
+  const sanitized = name ? name.trim() : '';
+  currentGalleryName = sanitized;
+  
+  // Update input field
+  const nameInput = document.getElementById('manifestName');
+  if (nameInput) {
+    nameInput.value = sanitized;
+  }
+  
+  // Update page display
+  updatePageTitle(sanitized);
+}
+
+// Function to update page title display
+function updatePageTitle(galleryName) {
+  const titleDisplay = document.getElementById('gallery-title-display');
+  
+  if (!titleDisplay) return;
+  
+  if (galleryName) {
+    // Escape HTML for safety
+    const tempDiv = document.createElement('div');
+    tempDiv.textContent = galleryName;
+    const safeGalleryName = tempDiv.innerHTML;
+    
+    titleDisplay.innerHTML = safeGalleryName;
+    
+    // Update browser tab title
+    document.title = `${galleryName} - IIIF Gallery Builder`;
+  } else {
+    titleDisplay.innerHTML = '';
+    
+    // Reset browser tab title
+    document.title = 'IIIF Image Gallery Builder';
+  }
+}
+
 // --- begin deeplink fileopening script --
 (function() {
 const FILE_INPUT_SELECTOR = '#uploadManifest';
@@ -416,6 +458,10 @@ if (iiifVersion === 3) {
   const card = document.createElement('div');
   card.className = 'card';
   
+    // Store canvas and manifest data on the card
+  card.dataset.manifestId = manifest['@id'] || manifest.id;
+  card.dataset.canvasData = JSON.stringify(canvas);
+
   // Make card draggable
   makeCardDraggable(card);
 
@@ -539,7 +585,12 @@ function repopulateGallery(manifestData) {
       addCanvasToGallery(canvas, manifest);
     });
   });
+
+  // Set gallery name from loaded manifest
+  const galleryName = manifestData.label || '';
+  setGalleryName(galleryName);
 }
+
 
 /// Function to add a IIIF manifest to the gallery (supports both 2.0 and 3.0)
 async function addManifestToGallery(manifestUrl) {
@@ -589,10 +640,15 @@ async function addManifestToGallery(manifestUrl) {
 function exportCombinedManifest() {
   const manifestName = document.getElementById('manifestName').value.trim();
   
-  if (!manifestName) {
-    alert('Please enter a name for the manifest.');
-    return;
+  // Auto-generate name if empty
+  let finalName = manifestName;
+  if (!finalName) {
+    const today = new Date().toISOString().split('T')[0];
+    finalName = `iiif-gallery-${today}`;
   }
+  
+  // Update gallery name
+  setGalleryName(finalName);
 
   // Get current gallery state from the DOM
   const gallery = document.getElementById('gallery');
@@ -603,60 +659,87 @@ function exportCombinedManifest() {
     return;
   }
 
-  // Build manifests array from current gallery order
-  const currentManifests = [];
+  // Group cards by manifest
+  const manifestGroups = new Map();
   
   cards.forEach(card => {
-    // Find the manifest link in the card
-    const manifestLinks = card.querySelectorAll('a');
-    let manifestUrl = null;
+    const manifestId = card.dataset.manifestId;
+    const canvasData = JSON.parse(card.dataset.canvasData);
     
-    manifestLinks.forEach(link => {
-      if (link.textContent === 'View IIIF Manifest') {
-        manifestUrl = link.href;
-      }
-    });
+    if (!manifestId || !canvasData) return;
     
-    if (manifestUrl) {
-      // Find the corresponding manifest in collectedManifests
-      const manifest = collectedManifests.find(m => 
-        (m['@id'] === manifestUrl || m.id === manifestUrl)
+    if (!manifestGroups.has(manifestId)) {
+      // Find the source manifest
+      const sourceManifest = collectedManifests.find(m => 
+        (m['@id'] === manifestId || m.id === manifestId)
       );
       
-      if (manifest) {
-        currentManifests.push(manifest);
-      }
+      if (!sourceManifest) return;
+      
+      manifestGroups.set(manifestId, {
+        manifest: sourceManifest,
+        canvases: []
+      });
     }
+    
+    manifestGroups.get(manifestId).canvases.push(canvasData);
+  });
+  
+  // Rebuild manifests with current canvases
+  const rebuiltManifests = [];
+  
+  manifestGroups.forEach(({ manifest, canvases }) => {
+    const iiifVersion = getIIIFVersion(manifest);
+    
+    let rebuiltManifest;
+    
+    if (iiifVersion === 3) {
+      rebuiltManifest = {
+        ...manifest,
+        items: canvases
+      };
+    } else {
+      rebuiltManifest = {
+        ...manifest,
+        sequences: [{
+          ...(manifest.sequences?.[0] || {}),
+          canvases: canvases
+        }]
+      };
+    }
+    
+    rebuiltManifests.push(rebuiltManifest);
   });
 
-  // Update collectedManifests to match current state
-  collectedManifests = currentManifests;
+  // Update collectedManifests
+  collectedManifests = rebuiltManifests;
 
-  // Create a combined manifest structure
+  // Create combined manifest structure
   const combinedManifest = {
     '@context': 'http://iiif.io/api/presentation/2/context.json',
     '@type': 'sc:Collection',
-    '@id': `https://example.org/collection/${manifestName}`,
-    'label': manifestName,
+    '@id': `https://example.org/collection/${finalName}`,
+    'label': finalName,
     'items': collectedManifests
   };
 
   // Convert to JSON string
   const manifestJson = JSON.stringify(combinedManifest, null, 2);
 
-  // Create a blob and download
+  // Create blob and download
   const blob = new Blob([manifestJson], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${manifestName}.json`;
+  a.download = `${finalName}.json`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 
-  alert(`Manifest "${manifestName}" has been exported successfully!`);
+  alert(`Manifest "${finalName}" has been exported successfully!`);
 }
+
 
 // Function to show the page selector modal
 function showPageSelector(manifest, canvasItems) {
