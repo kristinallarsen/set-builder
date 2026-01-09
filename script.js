@@ -390,6 +390,7 @@ let collection = getMetadataValue(canvasMetadata, 'Location') ||
                  getMetadataValue(manifestMetadata, 'Location') || 
                  getMetadataValue(manifestMetadata, 'Collection') || 
                  getMetadataValue(canvasMetadata, 'Collection') || 
+                 getMetadataValue(manifestMetadata, 'Relation') ||  // Stanford uses this for collection
                  getMetadataValue(canvasMetadata, 'Data Source') || 
                  getMetadataValue(manifestMetadata, 'Data Source') || 
                  'No collection returned';
