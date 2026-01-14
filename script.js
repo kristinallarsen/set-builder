@@ -1097,33 +1097,43 @@ document.getElementById('uploadManifest').addEventListener('change', async funct
 document.getElementById('saveLocally').addEventListener('click', exportCombinedManifest);
 
   // Event listener for toggle input panel button
-document.getElementById('toggleInputs').addEventListener('click', function() {
+document.getElementById('toggleInputs').addEventListener('click', function(e) {
+    e.preventDefault();
     const inputPanel = document.getElementById('inputPanel');
     const toggleBtn = document.getElementById('toggleInputs');
     
     if (inputPanel.classList.contains('hidden')) {
       inputPanel.classList.remove('hidden');
-      toggleBtn.textContent = 'Hide Input Panel';
+      toggleBtn.textContent = 'Hide Inputs';
     } else {
       inputPanel.classList.add('hidden');
-      toggleBtn.textContent = 'Show Input Panel';
+      toggleBtn.textContent = 'Show Inputs';
     }
 });
   
-  // Event listener for hide viewer
-document.getElementById('toggleViewer').addEventListener('click', function() {
-    const toggleViewerBtn = document.getElementById('toggleViewer');
-    const container = document.getElementsByClassName("container");
-    if (container[0].classList.contains('viewerHidden')) {
-      container[0].classList.remove('viewerHidden');
-      toggleViewerBtn.textContent = 'Hide Viewer';
-    } else {
-      container[0].classList.add('viewerHidden');
-      toggleViewerBtn.textContent = 'Show Viewer';
-    }
-});
 
- 
+// Event listener for hide viewer
+document.getElementById('toggleViewer').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent link navigation
+  const toggleLink = document.getElementById('toggleViewer');
+  const container = document.querySelector('.container');
+  const leftPanel = document.querySelector('.left-panel');
+  
+  if (container.classList.contains('viewerHidden')) {
+    container.classList.remove('viewerHidden');
+    toggleLink.textContent = 'Hide Viewer';
+    if (leftPanel.dataset.previousWidth) {
+      leftPanel.style.width = leftPanel.dataset.previousWidth;
+    } else {
+      leftPanel.style.width = '40%';
+    }
+  } else {
+    leftPanel.dataset.previousWidth = leftPanel.style.width || '40%';
+    container.classList.add('viewerHidden');
+    toggleLink.textContent = 'Show Viewer';
+    leftPanel.style.width = '';
+  }
+});
   
  // Page selector modal event listeners
   document.getElementById('selectAllPages').addEventListener('click', selectAllPages);
