@@ -260,10 +260,11 @@ function getMetadataValue(metadata, label, getLast = false) {
   const normalizedLabel = label.toLowerCase();
   
   const items = metadata.filter(item => {
+    
     // IIIF 2.0 format: item.label is a string
     if (typeof item.label === 'string') {
       return item.label.toLowerCase() === normalizedLabel;
-    }
+    }   
     // IIIF 3.0 format: item.label is an object like {none: ["Title"]} or {en: ["Title"]}
     if (typeof item.label === 'object') {
       const labelValues = Object.values(item.label).flat();
@@ -281,7 +282,8 @@ function getMetadataValue(metadata, label, getLast = false) {
     return item.value;
   }
   if (Array.isArray(item.value)) {
-    return item.value[0];
+    if(typeof item.value[0] === 'object') { return Object.values(item.value[0])[1]; }
+    else { return item.value[0]; }
   }
   
   // IIIF 3.0 format: value is an object like {none: ["value"]} or {en: ["value"]}
@@ -521,9 +523,19 @@ if (!locationLink) {
   const card = document.createElement('div');
   card.className = 'card';
   
-    // Store canvas and manifest data on the card
-  card.dataset.manifestId = manifest['@id'] || manifest.id;
-  card.dataset.canvasData = JSON.stringify(canvas);
+  // Store canvas and manifest data on the card
+card.dataset.manifestId = manifest['@id'] || manifest.id;
+
+// Sanitize canvas before storing to prevent validation issues
+const canvasToStore = JSON.parse(JSON.stringify(canvas)); // Deep clone
+
+// Fix otherContent if it's a string instead of array (David Rumsey issue)
+if (canvasToStore.otherContent && typeof canvasToStore.otherContent === 'string') {
+  canvasToStore.otherContent = [canvasToStore.otherContent];
+}
+
+card.dataset.canvasData = JSON.stringify(canvasToStore);
+
 
   // Make card draggable
   makeCardDraggable(card);
@@ -565,32 +577,34 @@ if (!locationLink) {
   const attributionEl = document.createElement('p');
   attributionEl.innerHTML = `<strong>Attribution:</strong> ${attribution}`;
 
-  // Create link to item
-  const locationLinkEl = document.createElement('a');
-  locationLinkEl.href = locationLink;
-  locationLinkEl.textContent = 'View Item';
-  locationLinkEl.target = '_blank';
+  // Create link container (like control-links)
+const cardLinks = document.createElement('div');
+cardLinks.className = 'card-links';
 
-  const locationParagraph = document.createElement('p');
-  locationParagraph.appendChild(locationLinkEl);
+// Create link to item
+const locationLinkEl = document.createElement('a');
+locationLinkEl.href = locationLink;
+locationLinkEl.textContent = 'View Item';
+locationLinkEl.target = '_blank';
+locationLinkEl.className = 'card-link';
+cardLinks.appendChild(locationLinkEl);
 
-  // Create link to IIIF manifest
-  const manifestLinkEl = document.createElement('a');
-  manifestLinkEl.href = manifest['@id'] || manifest.id || '#';
-  manifestLinkEl.textContent = 'View IIIF Manifest';
-  manifestLinkEl.target = '_blank';
+// Create link to IIIF manifest
+const manifestLinkEl = document.createElement('a');
+manifestLinkEl.href = manifest['@id'] || manifest.id || '#';
+manifestLinkEl.textContent = 'View Manifest';
+manifestLinkEl.target = '_blank';
+manifestLinkEl.className = 'card-link';
+cardLinks.appendChild(manifestLinkEl);
 
-  const manifestParagraph = document.createElement('p');
-  manifestParagraph.appendChild(manifestLinkEl);
 
-  // Create link to Allmaps
-  const allmapsLinkEl = document.createElement('a');
-  allmapsLinkEl.href = allmapsLink;
-  allmapsLinkEl.textContent = 'Open in Allmaps Editor';
-  allmapsLinkEl.target = '_blank';
-
-  const allmapsParagraph = document.createElement('p');
-  allmapsParagraph.appendChild(allmapsLinkEl);
+// Create link to Allmaps
+const allmapsLinkEl = document.createElement('a');
+allmapsLinkEl.href = allmapsLink;
+allmapsLinkEl.textContent = 'Allmaps Editor';
+allmapsLinkEl.target = '_blank';
+allmapsLinkEl.className = 'card-link';
+cardLinks.appendChild(allmapsLinkEl);
 
   // Append all elements to card
   card.appendChild(deleteBtn);
@@ -600,17 +614,12 @@ if (!locationLink) {
   card.appendChild(dateEl);
   card.appendChild(collectionEl);
   card.appendChild(attributionEl);
-  card.appendChild(locationParagraph);
-  card.appendChild(manifestParagraph);
-  card.appendChild(allmapsParagraph);
+  card.appendChild(cardLinks);
 
   // Add card to gallery
   document.getElementById('gallery').appendChild(card);
 }
 
-
-
-// Clear current gallery and add images from loaded collection
 function repopulateGallery(manifestData) {
   const gallery = document.getElementById('gallery');
   
@@ -637,10 +646,8 @@ function repopulateGallery(manifestData) {
     let canvasItems = [];
 
     if (iiifVersion === 3) {
-      // IIIF 3.0
       canvasItems = manifest.items || [];
     } else {
-      // IIIF 2.0
       canvasItems = manifest.sequences?.[0]?.canvases || [];
     }
 
@@ -650,15 +657,23 @@ function repopulateGallery(manifestData) {
   });
 
   // Set gallery name from loaded manifest
-  const galleryName = manifestData.label || '';
+  let galleryName = '';
+  
+  if (manifestData.label) {
+    if (typeof manifestData.label === 'string') {
+      galleryName = manifestData.label;
+    } else if (typeof manifestData.label === 'object') {
+      const labelValues = Object.values(manifestData.label).flat();
+      galleryName = labelValues[0] || '';
+    }
+  }
+  
   setGalleryName(galleryName);
-
-
- //Auto-open first image
+  
+  // Auto-open first image after gallery loads
   setTimeout(() => {
     openFirstImage();
-  }, 100); // Small delay to ensure DOM is ready
-
+  }, 100);
 }
 
 /// Function to add a IIIF manifest to the gallery (supports both 2.0 and 3.0)
@@ -705,7 +720,7 @@ async function addManifestToGallery(manifestUrl) {
   }
 }
 
-// Function to export combined manifest
+// Function to export combined manifest (Collection format - for this app)
 function exportCombinedManifest() {
   const manifestName = document.getElementById('manifestName').value.trim();
   
@@ -716,7 +731,6 @@ function exportCombinedManifest() {
     finalName = `iiif-gallery-${today}`;
   }
   
-  // Update gallery name
   setGalleryName(finalName);
 
   // Get current gallery state from the DOM
@@ -728,66 +742,48 @@ function exportCombinedManifest() {
     return;
   }
 
-  // Group cards by manifest
-  const manifestGroups = new Map();
+  // Build manifests array from current gallery order
+  // Use a Map to track unique manifests and prevent duplicates
+  const manifestMap = new Map();
   
   cards.forEach(card => {
-    const manifestId = card.dataset.manifestId;
-    const canvasData = JSON.parse(card.dataset.canvasData);
+    // Find the manifest link in the card
+    const manifestLinks = card.querySelectorAll('a');
+    let manifestUrl = null;
     
-    if (!manifestId || !canvasData) return;
+    manifestLinks.forEach(link => {
+      if (link.textContent === 'View Manifest') {
+        manifestUrl = link.href;
+      }
+    });
     
-    if (!manifestGroups.has(manifestId)) {
-      // Find the source manifest
-      const sourceManifest = collectedManifests.find(m => 
-        (m['@id'] === manifestId || m.id === manifestId)
+    if (manifestUrl) {
+      // Find the corresponding manifest in collectedManifests
+      const manifest = collectedManifests.find(m => 
+        (m['@id'] === manifestUrl || m.id === manifestUrl)
       );
       
-      if (!sourceManifest) return;
-      
-      manifestGroups.set(manifestId, {
-        manifest: sourceManifest,
-        canvases: []
-      });
+      if (manifest) {
+        // Use manifest URL as key to prevent duplicates
+        const key = manifest['@id'] || manifest.id;
+        if (!manifestMap.has(key)) {
+          manifestMap.set(key, manifest);
+        }
+      }
     }
-    
-    manifestGroups.get(manifestId).canvases.push(canvasData);
-  });
-  
-  // Rebuild manifests with current canvases
-  const rebuiltManifests = [];
-  
-  manifestGroups.forEach(({ manifest, canvases }) => {
-    const iiifVersion = getIIIFVersion(manifest);
-    
-    let rebuiltManifest;
-    
-    if (iiifVersion === 3) {
-      rebuiltManifest = {
-        ...manifest,
-        items: canvases
-      };
-    } else {
-      rebuiltManifest = {
-        ...manifest,
-        sequences: [{
-          ...(manifest.sequences?.[0] || {}),
-          canvases: canvases
-        }]
-      };
-    }
-    
-    rebuiltManifests.push(rebuiltManifest);
   });
 
-  // Update collectedManifests
-  collectedManifests = rebuiltManifests;
+  // Convert Map back to array (in the order they were encountered)
+  const currentManifests = Array.from(manifestMap.values());
 
-  // Create combined manifest structure
+  // Update collectedManifests to match current state
+  collectedManifests = currentManifests;
+
+  // Create a combined manifest structure (Collection format)
   const combinedManifest = {
     '@context': 'http://iiif.io/api/presentation/2/context.json',
     '@type': 'sc:Collection',
-    '@id': `https://example.org/collection/${finalName}`,
+    '@id': `https://iiif-gallery-builder.example.org/${finalName}`,
     'label': finalName,
     'items': collectedManifests
   };
@@ -795,12 +791,12 @@ function exportCombinedManifest() {
   // Convert to JSON string
   const manifestJson = JSON.stringify(combinedManifest, null, 2);
 
-  // Create blob and download
+  // Create a blob and download
   const blob = new Blob([manifestJson], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${finalName}.json`;
+  a.download = `${finalName}-gallery.json`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -809,6 +805,146 @@ function exportCombinedManifest() {
   alert(`Manifest "${finalName}" has been exported successfully!`);
 }
 
+
+// Function to export gallery as a flattened IIIF Manifest (interoperable format)
+function exportAsManifest() {
+  const manifestName = document.getElementById('manifestName').value.trim();
+  
+  // Auto-generate name if empty
+  let finalName = manifestName;
+  if (!finalName) {
+    const today = new Date().toISOString().split('T')[0];
+    finalName = `iiif-gallery-${today}`;
+  }
+  
+  setGalleryName(finalName);
+
+  // Get current gallery state from the DOM
+  const gallery = document.getElementById('gallery');
+  const cards = gallery.querySelectorAll('.card');
+  
+  if (cards.length === 0) {
+    alert('No images in gallery to export. Please add some manifests first.');
+    return;
+  }
+
+  // Collect all canvases with source information preserved
+  const allCanvases = [];
+  
+  cards.forEach((card, index) => {
+    const canvasData = card.dataset.canvasData;
+    const manifestId = card.dataset.manifestId;
+    
+    if (canvasData) {
+     try {
+  const canvas = JSON.parse(canvasData);
+
+  // Sanitize canvas to reduce validation warnings
+  if (canvas.images) {
+    canvas.images.forEach(img => {
+      // Ensure annotation has @id
+      if (!img['@id']) {
+        img['@id'] = `${canvas['@id'] || 'canvas'}/annotation/${Math.random().toString(36).substr(2, 9)}`;
+      }
+      
+      // Clean up image resource
+      if (img.resource && img.resource.service) {
+        if (Array.isArray(img.resource.service)) {
+          img.resource.service.forEach(svc => delete svc.protocol);
+        } else {
+          delete img.resource.service.protocol;
+        }
+      }
+    });
+  }
+
+  // Remove non-standard rendering field from canvas
+  delete canvas.rendering;
+
+  // Add source manifest URL to canvas metadata
+  canvas.metadata = canvas.metadata || [];
+  
+  // Check if source manifest isn't already in metadata
+  const hasSourceManifest = canvas.metadata.some(m => 
+    m.label === 'Source Manifest' || 
+    m.label === 'source_manifest'
+  );
+  
+  if (!hasSourceManifest && manifestId) {
+    canvas.metadata.push({
+      'label': 'Source Manifest',
+      'value': manifestId
+    });
+  }
+  
+  // Generate new canvas ID for the flattened manifest
+  const originalId = canvas['@id'] || canvas.id;
+  canvas['@id'] = `https://example.org/manifest/${finalName}/canvas/${index}`;
+  
+  // Store original canvas ID as well
+  const hasOriginalId = canvas.metadata.some(m => 
+    m.label === 'Original Canvas ID'
+  );
+  
+  if (!hasOriginalId && originalId) {
+    canvas.metadata.push({
+      'label': 'Original Canvas ID',
+      'value': originalId
+    });
+  }
+  
+  allCanvases.push(canvas);
+} catch (e) {
+  console.error('Failed to parse canvas data:', e);
+}
+}
+  });
+
+
+  // Create a single flattened manifest with all canvases
+  const flatManifest = {
+    '@context': 'http://iiif.io/api/presentation/2/context.json',
+    '@type': 'sc:Manifest',
+    '@id': `https://example.org/manifest/${finalName}`,
+    'label': finalName,
+    'description': `A curated gallery of ${allCanvases.length} images created with IIIF Image Gallery Builder`,
+    'metadata': [
+      {
+        'label': 'Created with',
+        'value': 'IIIF Image Gallery Builder'
+      },
+      {
+        'label': 'Number of images',
+        'value': allCanvases.length.toString()
+      },
+      {
+        'label': 'Created',
+        'value': new Date().toISOString().split('T')[0]
+      }
+    ],
+    'sequences': [{
+      '@type': 'sc:Sequence',
+      '@id': `https://example.org/manifest/${finalName}/sequence/1`,
+      'canvases': allCanvases
+    }]
+  };
+
+  // Convert to JSON string
+  const manifestJson = JSON.stringify(flatManifest, null, 2);
+
+  // Create a blob and download
+  const blob = new Blob([manifestJson], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${finalName}-manifest.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  alert(`Manifest "${finalName}" has been exported successfully!`);
+}
 
 // Function to show the page selector modal
 function showPageSelector(manifest, canvasItems) {
@@ -952,7 +1088,9 @@ function addSelectedPagesToGallery() {
   } else {
     allCanvasItems = currentManifestForSelection.sequences?.[0]?.canvases || [];
   }
-  
+
+// Empty the Add Manifest field after selecting thumbnails
+document.getElementById('manifestUrl').value = "";
  
 // Create a modified manifest with only selected pages and store it
 const sortedIndices = Array.from(selectedPageIndices).sort((a, b) => a - b);
@@ -1091,20 +1229,52 @@ document.getElementById('uploadManifest').addEventListener('change', async funct
 
   // Event listener for the export button
 document.getElementById('saveLocally').addEventListener('click', exportCombinedManifest);
+document.getElementById('exportForViewers').addEventListener('click', exportAsManifest);
 
-   // Event listener for toggle input panel button
-  document.getElementById('toggleInputs').addEventListener('click', function() {
+
+ // Event listener for toggle input panel (only if it exists - not in viewer.html)
+const toggleInputsBtn = document.getElementById('toggleInputs');
+if (toggleInputsBtn) {
+  toggleInputsBtn.addEventListener('click', function(e) {
+    e.preventDefault();
     const inputPanel = document.getElementById('inputPanel');
-    const toggleBtn = document.getElementById('toggleInputs');
+    const toggleLink = document.getElementById('toggleInputs');
     
     if (inputPanel.classList.contains('hidden')) {
       inputPanel.classList.remove('hidden');
-      toggleBtn.textContent = 'Hide Input Panel';
+      toggleLink.textContent = 'Hide Inputs';
     } else {
       inputPanel.classList.add('hidden');
-      toggleBtn.textContent = 'Show Input Panel';
+      toggleLink.textContent = 'Show Inputs';
     }
   });
+}
+
+// Event listener for hide viewer
+const toggleViewerBtn = document.getElementById('toggleViewer');
+if (toggleViewerBtn) {
+  toggleViewerBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const toggleLink = document.getElementById('toggleViewer');
+    const container = document.querySelector('.container');
+    const leftPanel = document.querySelector('.left-panel');
+    
+    if (container.classList.contains('viewerHidden')) {
+      container.classList.remove('viewerHidden');
+      toggleLink.textContent = 'Hide Viewer';
+      if (leftPanel.dataset.previousWidth) {
+        leftPanel.style.width = leftPanel.dataset.previousWidth;
+      } else {
+        leftPanel.style.width = '40%';
+      }
+    } else {
+      leftPanel.dataset.previousWidth = leftPanel.style.width || '40%';
+      container.classList.add('viewerHidden');
+      toggleLink.textContent = 'Show Viewer';
+      leftPanel.style.width = '';
+    }
+  });
+}
  // Page selector modal event listeners
   document.getElementById('selectAllPages').addEventListener('click', selectAllPages);
   document.getElementById('deselectAllPages').addEventListener('click', deselectAllPages);
@@ -1113,10 +1283,11 @@ document.getElementById('saveLocally').addEventListener('click', exportCombinedM
   document.querySelector('.close-modal').addEventListener('click', closePageSelector);
   
 // Close modal when clicking outside
-window.addEventListener('click', (e) => {
-  const modal = document.getElementById('pageSelectorModal');
-  if (e.target === modal) {
-    closePageSelector();
-  }
-});}
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('pageSelectorModal');
+    if (e.target === modal) {
+      closePageSelector();
+    }
+  });
+}
 
