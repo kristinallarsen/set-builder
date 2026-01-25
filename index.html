@@ -33,14 +33,19 @@
         <div class="header-top">
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/International_Image_Interoperability_Framework_logo.png" alt="IIIF Logo" class="iiif-logo">
   <h1 id="page-title">
-  <span class="title-base">IIIF Image Gallery Builder</span>
-  <span class="title-gallery" id="gallery-title-display"></span>
-</h1>
-  <a href="info.html" class="help-icon" target="_blank" title="Help & Workflows">ⓘ</a>
-  <button id="toggleInputs" class="toggle-btn">Hide Input Panel</button>
+    <span class="title-base">IIIF Image Gallery Builder</span>
+    <span class="title-gallery" id="gallery-title-display"></span>
+  </h1>
+
+  <div class="control-links">
+  <a href="info.html" class="control-link" target="_blank">ⓘ Get Help</a>
+  <a href="#" id="toggleInputs" class="control-link">Hide Inputs</a>
+  <a href="#" id="toggleViewer" class="control-link">Hide Viewer</a>
+</div>
 </div>
 
-        
+    <div class="section-divider"></div>
+          
         <div id="inputPanel" class="input-panel">
   <!-- Add Manifests Section -->
   <div class="input-section">
@@ -72,18 +77,34 @@
   <div class="section-divider"></div>
 
   <!-- Save Gallery Section -->
-  <div class="input-section">
-    <label for="manifestName" class="section-label">Save Gallery</label>
-    <input type="text" id="manifestName" placeholder="Enter gallery name (optional - auto-generated if empty)" />
-    <button id="saveLocally">💾 Save Locally</button>
+<div class="input-section">
+  <label for="manifestName" class="section-label">Save Gallery</label>
+  <input type="text" id="manifestName" placeholder="Enter gallery name">
+
+  <div class="export-buttons-row">
+<button id="saveLocally">💾  Save File</button>
+
+    <button id="exportForViewers" class="export-iiif-btn" title="Export for IIIF Viewers">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/International_Image_Interoperability_Framework_logo.png" 
+           alt="Export Manifest" 
+           class="iiif-export-icon">
+    </button>
   </div>
-</div>
-      </div>
-      <div id="gallery"></div>
-    </div>
+  </div> <!-- Close input-section -->
+</div> <!-- Close inputPanel -->
+</div> <!-- Close header -->
+
+<div id="gallery"></div>
+   </div> <!-- Close left-panel -->
+  
     <!-- Resizable divider -->
     <div id="resizer"></div>
-    <div id="viewer"></div>
+    
+    <div id="viewer">
+      <div id="viewerHint">Click any thumbnail to load an image.</div>
+    </div>
+  </div> <!-- Close container -->
+    
 
     <script src="script.js"></script>
     
