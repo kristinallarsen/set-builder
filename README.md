@@ -1,3 +1,8 @@
+Archived January 25, 2026
+Development of this app continues at davidrumseymapcenter/set-builder
+
+************************************
+
 IIIF Image Gallery Builder V2.0
 
 OpenSeaDragon enabled iiif gallery viewer written with Claude 4-5 Sonnet chatbot
