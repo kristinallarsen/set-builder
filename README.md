@@ -1,4 +1,5 @@
-Archived January 25, 2026
+Archived January 25, 2026.
+
 Development of this app continues at davidrumseymapcenter/set-builder
 
 ************************************
